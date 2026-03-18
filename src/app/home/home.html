@@ -1,19 +1,24 @@
 <section>
-<form>
-<input
-class="form-control min d-inline-block m-3"
-type="text"
-placeholder="Filter by city"
-aria-label="Filter by city"
-style="width: 30%"
-/>
-<button type="button" class="btn btn-primary">Search</button>
-</form>
+  <form>
+    <input
+      class="form-control min d-inline-block m-3"
+      type="text"
+      placeholder="Filter by city"
+      aria-label="Filter by city"
+      style="width: 30%"
+    />
+    <button type="button" class="btn btn-primary">Search</button>
+  </form>
 </section>
+
 <section class="results">
- @for (housingLocation of housingLocationList; track housingLocation){
- <app-housing-location
- [housingLocation]="housingLocation"
- ></app-housing-location>
- }
+  @for (location of housingLocationList; track location.id) {
+    <div>
+      <h3>{{ location.name }}</h3>
+      <p>{{ location.city }}, {{ location.state }}</p>
+      <img [src]="location.photo" alt="photo" width="200" />
+    </div>
+  } @empty {
+    <p>No housing locations available.</p>
+  }
 </section>
