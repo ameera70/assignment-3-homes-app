@@ -11,14 +11,10 @@
   </form>
 </section>
 
-<section class="results">
-  @for (location of housingLocationList; track location.id) {
-    <div>
-      <h3>{{ location.name }}</h3>
-      <p>{{ location.city }}, {{ location.state }}</p>
-      <img [src]="location.photo" alt="photo" width="200" />
-    </div>
-  } @empty {
-    <p>No housing locations available.</p>
-  }
+<<section class="results">
+ @for (housingLocation of housingLocationList; track housingLocation){
+ <app-housing-location
+ [housingLocation]="housingLocation"
+ ></app-housing-location>
+ }
 </section>
